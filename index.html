@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Driven Component Example</title>
+    <script type="module" src="counter-component.js"></script>
+</head>
+<body>
+<counter-component id="myCounter" count="5"></counter-component>
+
+<script type="module">
+    const counter = document.getElementById('myCounter');
+
+    function handleCountChanged(event) {
+        console.log('Count changed:', event.detail.count);
+    }
+
+    counter.addEventListener('countChanged', handleCountChanged);
+
+    const variableName = 'count';
+    let newValue = 10;
+
+    counter.proxy[variableName] = newValue;  // 使用 Proxy 的 set 方法
+
+    setTimeout(() => {
+        newValue = 20;
+        counter.proxy[variableName] = newValue;  // 使用 Proxy 的 set 方法
+    }, 2000);
+
+    setTimeout(() => {
+        counter.setAttribute(variableName, 30);  // 使用原生的 setAttribute 方法
+    }, 4000);
+</script>
+</body>
+</html>
