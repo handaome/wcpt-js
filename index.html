@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Driven Component Example</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script type="module" src="counter-component.js"></script>
+
 </head>
 <body>
-<counter-component id="myCounter" count="5"></counter-component>
 
+
+<counter-component id="myCounter" count="5"></counter-component>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/mhDoLbDldZc3qpsJHpLogda//BVZbgYuw6kof4u2FrCedxOtgRZDTHgHUhOCVim" crossorigin="anonymous"></script>
 <script type="module">
     const counter = document.getElementById('myCounter');
 
@@ -28,9 +33,6 @@
         counter.proxy[variableName] = newValue;  // 使用 Proxy 的 set 方法
     }, 2000);
 
-    setTimeout(() => {
-        counter.setAttribute(variableName, 30);  // 使用原生的 setAttribute 方法
-    }, 4000);
 </script>
 </body>
 </html>

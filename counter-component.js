@@ -8,7 +8,7 @@ class CounterComponent extends DataDrivenComponent {
 
     connectedCallback() {
         super.connectedCallback();
-        this.shadowRoot.addEventListener('click', () => {
+        this.addEventListener('click', () => {
             this.setState({ count: this.proxy.count + 1 });
             this.dispatchEvent(new CustomEvent('countChanged', {
                 detail: { count: this.proxy.count }
@@ -17,7 +17,7 @@ class CounterComponent extends DataDrivenComponent {
     }
 
     render() {
-        this.shadowRoot.innerHTML = `
+        this.innerHTML = `
             <style>
                 .counter {
                     display: inline-block;
@@ -32,6 +32,7 @@ class CounterComponent extends DataDrivenComponent {
             <div class="counter">
                 Count: ${this.proxy.count}
             </div>
+            <button type="button" class="btn btn-link">Link</button>
         `;
     }
 }

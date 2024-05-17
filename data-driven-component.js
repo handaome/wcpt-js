@@ -1,10 +1,8 @@
 export class DataDrivenComponent extends HTMLElement {
     constructor() {
         super();
-        this.attachShadow({ mode: 'open' });
         this.state = {};
         this.proxy = this.createProxy(this.state);
-        this.attributeObserver = new MutationObserver(this.handleAttributeChange.bind(this));
     }
 
     createProxy(data) {
@@ -28,13 +26,10 @@ export class DataDrivenComponent extends HTMLElement {
     }
 
     connectedCallback() {
-        this.attributeObserver.observe(this, { attributes: true });
         this.render();
     }
 
-    disconnectedCallback() {
-        this.attributeObserver.disconnect();
-    }
+
 
     handleAttributeChange(mutations) {
         mutations.forEach(mutation => {
